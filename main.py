@@ -8,6 +8,7 @@ while True:
           '4-Deletar [Completas]\n'
           '0-Sair')
     escolha=int(input('Digite uma opção:'))
+    if escolha == 1 :
 
     if escolha ==0:
         break
