@@ -1,6 +1,17 @@
 #gestao de tarefas
 
+lista_tarefas=[]
 
+
+#funçao das escolhas
+def criar():
+    tarefa=str(input('Tarefa:'))
+    dados={'Tarefa':tarefa}
+
+    lista_tarefas.append(dados)
+    print(lista_tarefas)
+
+#codigo principal
 while True:
     print('1-Criar Tarefa\n'
           '2-Visualizar\n'
@@ -9,6 +20,6 @@ while True:
           '0-Sair')
     escolha=int(input('Digite uma opção:'))
     if escolha == 1 :
-
+        criar()
     if escolha ==0:
         break
