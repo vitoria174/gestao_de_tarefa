@@ -6,13 +6,15 @@ lista_tarefas=[]
 #funçao das escolhas
 def criar():
     tarefa=str(input('Tarefa:'))
-    dados={'Tarefa':tarefa}
+    dados={'[]':tarefa}
 
     lista_tarefas.append(dados)
     print(lista_tarefas)
 
 #funcao para visualização
 def visualizar():
+    for ver in lista_tarefas:
+        print(ver)
 
 #codigo principal
 while True:
@@ -25,6 +27,6 @@ while True:
     if escolha == 1 :
         criar()
     if escolha ==2:
-
+        visualizar()
     if escolha ==0:
         break
