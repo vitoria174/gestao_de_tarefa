@@ -11,6 +11,9 @@ def criar():
     lista_tarefas.append(dados)
     print(lista_tarefas)
 
+#funcao para visualização
+def visualizar():
+
 #codigo principal
 while True:
     print('1-Criar Tarefa\n'
@@ -21,5 +24,7 @@ while True:
     escolha=int(input('Digite uma opção:'))
     if escolha == 1 :
         criar()
+    if escolha ==2:
+
     if escolha ==0:
         break
