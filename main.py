@@ -7,14 +7,20 @@ lista_tarefas=[]
 def criar():
     tarefa=str(input('Tarefa:'))
     dados={'[]':tarefa}
-
     lista_tarefas.append(dados)
-    print(lista_tarefas)
+    print(f'tarefa {tarefa} criada')
 
 #funcao para visualização
 def visualizar():
+    cont=0
     for ver in lista_tarefas:
-        print(ver)
+        cont+=1
+        print(f'{cont}',ver)
+
+#atualizar tarefas
+def atualizar():
+    atualizar_tarefa=int(input('Qual tarefa atualizar:'))
+
 
 #codigo principal
 while True:
@@ -28,5 +34,7 @@ while True:
         criar()
     if escolha ==2:
         visualizar()
+    if escolha == 3:
+        atualizar()
     if escolha ==0:
         break
