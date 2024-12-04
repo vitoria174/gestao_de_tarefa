@@ -22,15 +22,16 @@ def atualizar():
     num=int(input('Qual tarefa atualizar:'))
     tarefas=str(input('nova tarefa:'))
     lista_tarefas[num]=tarefas
-    print(lista_tarefas)
+    print(f'tarefa {lista_tarefas[num]} atualizada')
 #deletar tarefas
 def deletar():
     if len(lista_tarefas) == 0:
         print('nenhuma tarefa criada')
     else:
         print('vou deletar sua tarefa')
-        resposta=str(input('Qual tarefa gostaria de deletar?'))
-        print('Tarefa deletada!')
+        resposta=int(input('Qual tarefa gostaria de deletar?'))
+        lista_tarefas.pop(resposta)
+        print(lista_tarefas)
 
 #codigo principal
 while True:
