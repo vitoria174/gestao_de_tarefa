@@ -1,5 +1,16 @@
 #gestao de tarefas
+import mysql.connector
 
+tarefa= mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='albuquerqu'
+)
+
+cursor= tarefa.cursor()
+
+cursor.execute('CREATE DATABASE gestao_tarefa')
+"""
 lista_tarefas=[]
 tarefas=[]
 
@@ -53,3 +64,4 @@ while True:
         deletar()
     if escolha ==0:
         break
+"""
