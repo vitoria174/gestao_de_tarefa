@@ -1,25 +1,32 @@
-#gestao de tarefas
+# gestao de projetos
+
 import mysql.connector
+from datetime import date
 
-tarefa= mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='albuquerqu'
-)
 
-cursor= tarefa.cursor()
-
-cursor.execute('CREATE DATABASE gestao_tarefa')
-"""
 lista_tarefas=[]
 tarefas=[]
 
-#funçao das escolhas
+#integração do banco de dados
+tarefa = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="albuquerqu",
+    database="banco_tarefa"
+)
+
+cursor=tarefa.cursor()
+
+
+#funçao criar tarefas
 def criar():
     tarefas=str(input('Tarefa:'))
-    lista_tarefas.append(tarefas)
-    print(f'tarefa {tarefas} criada')
-
+    data=date.today()
+    sql = "INSERT INTO tarefas(texto,data_criada) VALUES (%s,%s)"
+    valores=(tarefas,data)
+    cursor.execute(sql,valores)
+    tarefa.commit()
+    print(cursor.rowcount,"tarefa criada")
 
 #funcao para visualização
 def visualizar():
@@ -64,4 +71,6 @@ while True:
         deletar()
     if escolha ==0:
         break
-"""
+        
+
+
