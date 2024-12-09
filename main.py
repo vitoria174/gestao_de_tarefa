@@ -22,34 +22,39 @@ cursor=tarefa.cursor()
 def criar():
     tarefas=str(input('Tarefa:'))
     data=date.today()
-    sql = "INSERT INTO tarefas(texto,data_criada) VALUES (%s,%s)"
-    valores=(tarefas,data)
+    sql = "INSERT INTO tarefas(texto,data_criada) VALUES (%s,%s)" #inserir na tabela tarefa
+    valores=(tarefas,data) #dados do usuario
     cursor.execute(sql,valores)
     tarefa.commit()
     print(cursor.rowcount,"tarefa criada")
 
 #funcao para visualização
 def visualizar():
-    cont=0
-    for ver in lista_tarefas:
-        cont+=1
-        print(f'{cont}',ver)
+    cursor.execute('SELECT texto FROM tarefas')
+    resultado=cursor.fetchall()
+
+    for x in resultado:
+        print(x)
 
 #atualizar tarefas
 def atualizar():
     num=int(input('Qual tarefa atualizar:'))
-    tarefas=str(input('nova tarefa:'))
-    lista_tarefas[num]=tarefas
-    print(f'tarefa {lista_tarefas[num]} atualizada')
+    novatarefa=str(input('Nova tarefa:'))
+    sql= f"UPDATE tarefas SET texto = '{novatarefa}' WHERE id='{num}'"
+    cursor.execute(sql)
+    tarefa.commit()
+    print(f'tarefa atualizada')
 #deletar tarefas
 def deletar():
-    if len(lista_tarefas) == 0:
+    if visualizar() == 0:
         print('nenhuma tarefa criada')
+        print(visualizar())
     else:
+        dele=int(input('Qual tarefa deseja deletar:'))
         print('vou deletar sua tarefa')
-        resposta=int(input('Qual tarefa gostaria de deletar?'))
-        lista_tarefas.pop(resposta)
-        print(lista_tarefas)
+        sql=f'DELETE FROM tarefas WHERE id= {dele}'
+        cursor.execute(sql)
+        tarefa.commit()
 
 #codigo principal
 while True:
@@ -71,6 +76,6 @@ while True:
         deletar()
     if escolha ==0:
         break
-        
+
 
 
