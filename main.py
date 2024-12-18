@@ -55,6 +55,17 @@ def deletar():
         sql=f'DELETE FROM tarefas WHERE id= {dele}'
         cursor.execute(sql)
         tarefa.commit()
+def marcar():
+    cursor.execute("SELECT * FROM tarefas")
+    res=cursor.fetchall()
+    
+    for x in res:
+        print(x)
+    
+    print('[ID da tarefa]')
+    marca=int(input("Marcar tarefa:"))
+    
+    
 
 #codigo principal
 while True:
@@ -63,6 +74,7 @@ while True:
           '2-Visualizar\n'
           '3-Atualizar\n'
           '4-Deletar [Completas]\n'
+          '5-Marcar tarefas\n'
           '0-Sair')
     print('-'*20)
     escolha=int(input('Digite uma opção:'))
@@ -73,7 +85,9 @@ while True:
     if escolha == 3:
         atualizar()
     if escolha == 4:
-        deletar()
+        marcar()
+    if escolha == 5:
+        marcar()
     if escolha ==0:
         break
 
